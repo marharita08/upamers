@@ -16,13 +16,16 @@ public class UpdateUserFunction implements RequestHandler<APIGatewayProxyRequest
 
     public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent input,
                                                       final Context context) {
-        //TODO Implement a record update with help of DynamoDBService
-        /*
-        Add code that extracts parameters and body from input,
-        and uses DynamoDBService to update the record in the table.
-        The result of operation provided as HTTP 200 response.
-        In case of error return HTTP 503.
-        */
+
+        try {
+            String output = dynamoDBService.updateUser(input.getPathParameters(), input.getBody());
+            return apiGatewayService.getApiGatewayProxyResponseEvent(output, 200);
+        } catch (Exception e) {
+            return apiGatewayService.getApiGatewayProxyResponseEvent(
+                    "An error occurred while executing the lambda function: "
+                            + e.getClass() + "; message: " + e.getMessage(),
+                    503);
+        }
     }
 }
 
