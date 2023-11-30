@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-
-import { INTEREST_CHIPS_NAMES } from '../../../app.config';
 
 @Component({
   selector: 'epm-chips',
@@ -17,4 +15,7 @@ export class EpmChipsComponent {
 
   @Output() editChipsStatus: EventEmitter<string> = new EventEmitter<string>();
 
+  onChipsEdited(): void {
+    this.editChipsStatus.emit(this.chips);
+  }
 }

@@ -1,1 +1,13 @@
-<p>chips-component</p>
+<div [class]="isActive ? 'chips-item chips-item__active' : 'chips-item chips-item__non-active'">
+  <img [ngSrc]="'/assets/icons/' + chips.toLowerCase() + '.svg'" width="32" height="32" alt="icon" />
+  {{ chips }}
+  @if (isEditable) {
+  <button type="button" (click)="onChipsEdited()">
+    @if (isActive) {
+    <img [ngSrc]="'/assets/icons/close.svg'" width="16" height="16" alt="close icon" />
+    } @else {
+    <img [ngSrc]="'/assets/icons/plus.svg'" width="16" height="16" alt="cross icon" />
+    }
+  </button>
+  }
+</div>

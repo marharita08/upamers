@@ -1,0 +1,17 @@
+@import 'variables';
+@import 'mixins';
+
+.chips-item {
+  border-radius: 32px;
+  padding: 4px 12px 4px 4px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  &__active {
+    border: 1px solid $color-primary-base;
+    background-color: $color-light-blue;
+  }
+  &__non-active {
+    border: 1px solid $color-grey;
+  }
+}
